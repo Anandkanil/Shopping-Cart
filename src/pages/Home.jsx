@@ -32,12 +32,12 @@ const Home = () => {
       <div className="min-h-[80vh] grid sm:grid-cols-2 md:grid-cols-3 space-x-5 space-y-10 lg:grid-cols-4 max-w-6xl mx-auto p-2">
         {
           loading ? (
-            <div>No Data Available</div>
+            <div className="w-full h-full flex justify-center items-center">No Data Available</div>
           ) : (
             products.map((product) => (
               <div key={product.id} className="group hover:scale-110 transition duration-300 ease-in flex flex-col items-center justify-between shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] hover:shadow-[0px_0px_95px_53px_#00000024] gap-3 p-4 mt-10 ml-5  rounded-xl">
                 <h1 className="truncate w-40 mt-1 text-gray-700 font-semibold text-lg  text-left">{product.title}</h1>
-                <h1 className=" w-40 text-gray-400 font-normal text-[10px] text-left">{product.description.length > 50 ? `${product.description.substring(0, 50)}...` : product.description}</h1>
+                <h1 className=" w-40 text-gray-400 font-normal text-[10px] text-left">{product.description.length > 50 ? `${product.description.split(' ').slice(0,10).join(' ')+'...'}` : product.description}</h1>
                 <img className="w-full object-contain h-[180px]" src={product.image} alt="product" />
                 <div className="flex items-center justify-between w-full mt-5">
                   <p className="text-green-600 font-semibold">${product.price}</p>
